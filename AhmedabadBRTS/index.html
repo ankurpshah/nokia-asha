@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ahmedabad BRTS</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script language="javascript" type="text/javascript" src="js/fcalc.js"></script>
+    <script type="text/javascript">		
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_title.css" />
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body onload="start();">
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>Ahmedabad BRTS</h2></div>
+        </div>
+		<!-- label-with-text-field -->
+		<div class="ui-fieldset_S40labeledtextfield">
+		  <div class="ui-legend_S40labeledtextfield">Source:</div>
+		  <select id="ca" onchange="calc();">
+				<option  value="0" selected="selected">AJIT Mill</option>
+			</select>
+		</div>
+		<div class="ui-fieldset_S40labeledtextfield">
+		  <div class="ui-legend_S40labeledtextfield">Destination:</div>
+		  <select id="cb" onchange="calc();">
+				<option  value="0" selected="selected">AJIT Mill</option>
+			</select>
+		</div>
+		<div id="m" style="font-weight:bold; color:Red; font-size:medium;">
+                0 Rupees
+        </div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_AhmedabadBRTS_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+ 
+	</script>    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>STDCodes</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script language="javascript" type="text/javascript" src="js/stdcode.js"></script>
+    <script type="text/javascript">		
+		function getSTDCode() {
+			var stdVal=document.getElementById("stdcode").value;
+			if(isNumber(stdVal)) {
+				var stdcodeDetail=stdHash[stdVal];
+				if(typeof stdcodeDetail === "undefined") {
+					document.getElementById("result").innerHTML="STD code not found";
+				}
+				else {
+					var resultStr="City : " + stdcodeDetail[2] + "<br/>District : " + stdcodeDetail[1] + "<br/>State : " + stdcodeDetail[0];
+					document.getElementById("result").innerHTML=resultStr;
+				}
+			}
+			else {
+				document.getElementById("result").innerHTML="Not valid number.";
+			}				
+		}
+		
+		function isNumber(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}		
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_text_field_with_button.css" />
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>STD Codes</h2></div>
+        </div>
+        <div style="margin:0px; border:Solid 1px black;">
+			<p align="center" style="text-align: center; margin:0px; font-weight:bold;">
+				Don't prefix '0' in front of std code. e.g. 79, 22, 20 etc.
+			</p>
+		</div>
+        <!-- label-with-text-field -->
+		<div class="ui-fieldset_S40labeledtextfield">
+		  <div class="ui-legend_S40labeledtextfield">STD Code:</div>
+		  <input type="text" name="stdcode" id="stdcode" class="ui-text-input_S40labeledtextfield"/>
+		</div>
+		<div>
+			<button name="stdbutton" id="stdbutton" class="ui-button_S40button" onclick="getSTDCode();">Get Details</button>
+		</div>
+		<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+        </div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_STDCodes_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+ 
+	</script>    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QR Code Generator</title>
+<link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+<link rel="stylesheet" type="text/css"	href="s40-theme/css/s40-theme_labeled_text_field.css" />
+<link rel="stylesheet" type="text/css"	href="s40-theme/css/s40-theme_button.css" />
+<script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+<script type="text/javascript">		
+   	function getQRCode() {
+   		var qrimage = document.getElementById("imagediv");
+   		qrimage.style.display = "none";
+   		var qrcodetext = document.getElementById("QRCodeText").textContent;
+   		if(qrcodetext.trim().length == 0) {
+   			qrcodetext = "QR Code Generator - Ankur Shah";
+   			document.getElementById("QRCodeText").textContent = qrcodetext; 
+   		}
+   		var calUrl = "http://qrickit.com/api/qr?d="+encodeURIComponent(qrcodetext)+"&addtext=Developed+By,+Ankur+Shah&txtcolor=442EFF&fgdcolor=76103C&bgdcolor=C0F912&qrsize=50&t=p&e=m";
+		document.getElementById("qrimage").src=calUrl;
+		qrimage.style.display = "block";
+   	}
+</script>	
+</head>
+
+<body >
+	<div id="inneractiveBanner"> </div>
+	<div class="ui-page">
+		<!-- header -->
+		<div class="ui-header">
+			<div class="ui-title inline">
+				<h2>QR Code Generator</h2>
+			</div>
+		</div>
+	</div>
+	<!-- label-with-text-field -->
+	<div class="ui-fieldset_S40labeledtextfield">
+		<div class="ui-legend_S40labeledtextfield">Enter Text:</div>
+		<textarea id="QRCodeText" name="QRCodeText" rows="3" cols="25"></textarea>
+	</div>
+	<div>
+		<button name="QRCode" id="QRCode" class="ui-button_S40button" onclick="getQRCode();">Get QR Code</button>
+	</div>
+	<div style="display: none;" id="imagediv">
+		<img id="qrimage" src="" alt="" />
+	</div>
+	<script type="text/javascript">
+    //Mandatory parameters
+    inneractive.parameters.divID = "inneractiveBanner";
+    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+ 
+    //Optional parameters
+    inneractive.parameters.age = 25;
+ 
+    //Display the ad in the target div
+    inneractive.displayInneractiveAd();
+ 
+</script>
+</body>
+</html>

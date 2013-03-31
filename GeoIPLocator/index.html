@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GeoIP Locator</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery-1.7.2.js"></script>
+    <script language="javascript" type="text/javascript" src="js/geoip.js"></script>
+    <script type="text/javascript">		
+		function getValue() {
+			var ipValue=document.getElementById("ip").value.trim();
+			document.getElementById("locationbutton").disabled=true;
+			var url="http://freegeoip.net/json/"+ipValue;
+			jQuery.ajax({
+				url: url,
+				success: displayResult,
+				error: errorDisplay,
+				dataType: 'json',
+				crossDomain: false
+			});
+		}
+		
+		function errorDisplay(data) {
+			document.getElementById("result").innerHTML = "Wrong inputs";
+			document.getElementById("map").style.display = "none";
+			document.getElementById("locationbutton").disabled=false;
+		}
+		function displayResult(data) {
+			var result="IP : " + data.ip + "<br/>Country : "+ data.country_name + "<br/>Region : "+ data.region_name+"<br/>City : "+ data.city; 
+			document.getElementById("result").innerHTML=result;
+			document.getElementById("map").style.display = "block";
+			loadMap(data.latitude+","+data.longitude);
+			document.getElementById("locationbutton").disabled=false;
+		};		
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_button.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>GeoIP Locator</h2></div>
+        </div>
+        <div class="ui-content">
+        	<!-- label-with-text-field -->
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">IP or Location:</div>
+			  	<input type="text" name="ip" id="ip" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<button name="locationbutton" id="locationbutton" class="ui-button_S40button" onclick="getValue();">Get Location</button>
+		</div>
+		<div id="result" style="font-weight:bold; color:Red; font-size:medium;"></div>
+		<div id="map"></div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	</script>    
+</body>
+</html>

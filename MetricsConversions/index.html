@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Metrics Conversions</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">		
+    	function getValue() {
+    		var unitVal=document.getElementById("unit").value;
+    		var convertVal=document.getElementById("converter").value;
+    		var result="Wrong input";
+    		if(isNumber(unitVal)) {
+    			var unit=Number(unitVal);
+	    		if(convertVal == "CTOF") {
+	    			result=centitofaren(unit);
+	    		} else if(convertVal == "FTOC") {
+	    			result=farentocenti(unit);
+	    		} else if(convertVal == "KTOM") {
+	    			result=kmstomile(unit);
+	    		} else if(convertVal == "MTOK") {
+	    			result=miletokms(unit);
+	    		} else if(convertVal == "KTOP") {
+	    			result=kgstopund(unit);
+	    		} else if(convertVal == "PTOK") {
+	    			result=poundtokgs(unit);
+	    		}
+    		}
+    		document.getElementById("result").innerHTML = result;
+    	}
+    	
+    	function centitofaren(unit) {
+    		var result = ((unit * 9) / 5) + 32;
+    		return unit + " celsius = " + result + " fahrenheit";
+    	}
+    	
+    	function farentocenti(unit) {
+    		var result = ((unit -32) * 5) / 9;
+    		return unit + " fahrenheit = " + result + " celsius";
+    	}
+    	
+    	function kmstomile(unit) {
+    		var result = unit * 0.621371;
+    		return unit + " kms = " + result + " miles";
+    	}
+    	
+    	function miletokms(unit) {
+    		var result = unit * 1.60934;
+    		return unit + " miles = " + result + " kms";
+    	}
+    	
+    	function kgstopund(unit) {
+    		var result = unit * 2.20462;
+    		return unit + " kgs = " + result + " pound";
+    	}
+    	
+    	function poundtokgs(unit) {
+    		var result = unit * 0.453592;
+    		return unit + " pound = " + result + " kgs";
+    	}
+    	
+    	function isNumber(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>Metrics Conversions</h2></div>
+        </div>
+        <div class="ui-content">
+ 			<!-- label-with-text-field -->
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">Unit:</div>
+				<input type="text" name="unit" id="unit" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">From:</div>
+				<select id="converter">
+					<option  value="CTOF">Celsius to Fahrenheit</option>
+					<option  value="FTOC">Fahrenheit to Celsius</option>
+					<option  value="KTOM">KMS to Mile</option>
+					<option  value="MTOK">Mile to KMS</option>
+					<option  value="KTOP">KGS to Pound</option>
+					<option  value="PTOK">Pound to KGS</option>
+				</select>
+			</div>
+			<div>
+				<button name="conversion" id="conversion" class="ui-button_S40button" onclick="getValue();">Convert</button>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+	        </div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

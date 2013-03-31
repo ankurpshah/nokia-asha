@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <widget xmlns="http://www.w3.org/ns/widgets" height="200" id="http://AmortizationCalculator" version="1.0.0" viewmodes="windowed fullscreen" width="200">
+    
+    <name short="Amortization Calculator">Amortization Calculator</name>    
+
+    <description>
+       Amoritzation Calculator App
+    </description>
+    
+    <!-- Note: Author href MUST BE Url encoded 
+        @see http://en.wikipedia.org/wiki/Percent-encoding -->    
+    <author email="shah.yesha16@gmail.com" href="http://www.example.com">
+        Yesha Shah
+    </author>
+    
+    <icon src="icon.png"/>
+
+    <content src="index.html"/>
+    
+    <license>
+	   @ Yesha Shah, All rights reserved.
+    </license>
+    
+   	<feature name="nokia://s40.nokia.com/SAWRT/2.3" required="true" />
+</widget>

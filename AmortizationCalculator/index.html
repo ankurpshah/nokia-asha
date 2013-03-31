@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Amortization Calculator</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">		
+    	function getValue() {
+    		var balance=document.getElementById("amount").value;
+			var rateVal=document.getElementById("rate").value;
+			var periods=document.getElementById("tenure").value;
+			var monthlyRate = rateVal/(12 * 100);  // 0.065= APR of 6.5% as decimal
+			var monthlyPayment = (monthlyRate /(1-(Math.pow((1+monthlyRate),-(periods)))))*balance;
+			var resultStr="Amount: "+balance+"<br/>rate: "+rateVal+"<br/>tenure: "+periods+"<br/>Monthly Installment:"+monthlyPayment.toFixed(2);
+			document.getElementById("result").innerHTML=resultStr;
+			var tableStr="<table><tr><td>No.</td><td>Interest</td><td>Principle</td><td>Balance</td></tr>";
+			for (var i=0; i<periods; i++) {
+			  var interestForMonth = balance * monthlyRate;
+			  var principalForMonth = monthlyPayment - interestForMonth;
+			  balance -= principalForMonth; // probably should be -= principalForMonth see comments below
+			  tableStr += "<tr><td>"+(i+1)+"</td><td>"+interestForMonth.toFixed(2)+"</td><td>"+principalForMonth.toFixed(2)+"</td><td>"+balance.toFixed(2)+"</td></tr>";
+			}
+			tableStr += "</table>"
+			document.getElementById("chart").innerHTML=tableStr;
+    	}
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h3>Amortization Calculator</h3></div>
+        </div>
+        <div class="ui-content">
+        	<!-- label-with-text-field -->
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Loan Amount:</div>
+				  <input type="text" name="amount" id="amount" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Interest Rate:</div>
+				  <input type="text" name="rate" id="rate" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Period (in Months):</div>
+				  <input type="text" name="tenure" id="tenure" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div>
+				<button name="amortization" id="amortization" class="ui-button_S40button" onclick="getValue();">Get Details</button>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+	        </div>
+			<div id="chart">
+			</div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

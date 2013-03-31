@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gratuity Calculator</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">
+    	function getGratuity() {
+    		var basic=document.getElementById("basic").value;
+    		var da=document.getElementById("da").value;
+    		var months=document.getElementById("months").value;
+    		var numberOfYears=toInteger((months/12));
+    		var effectiveYears = numberOfYears;
+    		if (effectiveYears < 5) {
+    			effectiveYears = 0;
+    		}
+			var gratuityVal=(( (toInteger(basic) + toInteger(da)) * 15 * effectiveYears) / 26).toFixed(2);
+			var resultStr="Basic Pay : " + basic +"<br/>Dearness Allowance : " + da + "<br/>number of years : " + numberOfYears + "<br/>Gratuity Amount : " + gratuityVal; 
+			document.getElementById("result").innerHTML=resultStr;
+    	}
+    	
+    	function isNumber(n) {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+		
+		function toInteger(number){ 
+			return Math.round(  // round to nearest integer
+				Number(number)   // type cast your input
+			); 
+		};		
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>Gratuity Calculator</h2></div>
+        </div>
+        <div class="ui-content">
+ 			<!-- label-with-text-field -->
+			<div class="ui-fieldset_S40labeledtextfield">
+			  <div class="ui-legend_S40labeledtextfield">Basic Pay (Monthly):</div>
+			  <input type="text" name="basic" id="basic" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+			  <div class="ui-legend_S40labeledtextfield">Dearness Allowance (Monthly):</div>
+			  <input type="text" name="da" id="da" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+			  <div class="ui-legend_S40labeledtextfield">Months Completed:</div>
+			  <input type="text" name="months" id="months" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div>
+				<button name="gratuity" id="gratuity" class="ui-button_S40button" onclick="getGratuity();">Get Gratuity Amount</button>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+        	</div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

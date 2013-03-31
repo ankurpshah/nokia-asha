@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>True Randoms</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery-1.7.2.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">		
+    	function getValue() {
+    		var minVal=document.getElementById("min").value;
+			var maxVal=document.getElementById("max").value;
+			var totalVal=document.getElementById("total").value;
+			var randomUrl = "http://www.random.org/integers/?num="+totalVal+"&min="+minVal+"&max="+maxVal+"&col=2&base=10&format=plain&rnd=new";
+			updateItem(randomUrl);
+    	}
+    	
+    	function updateItem(url) {
+			jQuery.ajax({
+				url: url,
+				success: displayResult,
+				error: errorDisplay,
+				dataType: 'text',
+				crossDomain: false
+			});
+		}
+		
+		function errorDisplay(data) {
+			document.getElementById("result").innerHTML = "Wrong inputs";
+		}
+		
+		function displayResult(data) {
+			document.getElementById("result").innerHTML="<pre>" + data + "</pre>";
+		}
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />	
+    
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>True Randoms</h2></div>
+        </div>
+        <div class="ui-content">
+        	<div style="margin:0px; border:Solid 1px black;">
+				<p align="left" style="font-size: small; margin:0px;">
+					This app uses data from random.org. The randomness comes from atmospheric noise, which for many purposes is better than the pseudo-random number algorithms typically used in computer programs.
+				</p>
+			</div>
+        	<!-- label-with-text-field -->
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Minimum:</div>
+				  <input type="text" name="min" id="min" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Maximum:</div>
+				  <input type="text" name="max" id="max" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				  <div class="ui-legend_S40labeledtextfield">Numbers:</div>
+				  <input type="text" name="total" id="total" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div>
+				<button name="random" id="random" class="ui-button_S40button" onclick="getValue();">Get Details</button>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+	        </div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

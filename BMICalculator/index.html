@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BMI Calculator</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <link href="s40-theme/css/bmi.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">
+    	function getValue() {
+    		var methodVal=document.getElementById("method").value;
+    		var weightVal=document.getElementById("weight").value;
+    		var heightVal=document.getElementById("height").value;
+			if(methodVal == "english") {
+				document.getElementById("result").innerHTML="BMI index: " + calcEnglishBMI(weightVal,heightVal);
+			}
+			else {
+				document.getElementById("result").innerHTML="BMI index: " + calcMetricBMI(weightVal,heightVal);
+			}
+    	}
+    	function calcMetricBMI(weight, height) {
+			return ((weight * 100 * 100)/(height * height)).toFixed(2);
+		}
+	
+		function calcEnglishBMI(weight, height) {
+			return ((weight * 703)/(height * height)).toFixed(2);
+		}
+		
+		function changedisplay() {
+			var methodVal=document.getElementById("method").value;
+			if(methodVal == "english") {
+				document.getElementById("weightdiv").innerHTML = "Weight (lbs):";
+				document.getElementById("heightdiv").innerHTML = "Height (inches):";
+			}
+			else {
+				document.getElementById("weightdiv").innerHTML = "Weight (kgs):";
+				document.getElementById("heightdiv").innerHTML = "Height (centimeters):";
+			}
+		}		
+	</script>
+    <link rel="stylesheet" type="text/css" href="s40-theme/css/s40-theme_labeled_text_field.css" />
+</head>
+
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>BMI Calculator</h2></div>
+        </div>
+        <div class="ui-content">
+        <!-- label-with-text-field -->
+        	<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">Method:</div>
+				<select id="method" onchange="changedisplay();">
+					<option value="metric">Metric</option>
+					<option value="english">English</option>
+				</select>
+			</div>	
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div id="weightdiv" class="ui-legend_S40labeledtextfield">Weight (kgs):</div>
+				<input type="text" name="weight" id="weight" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div id="heightdiv" class="ui-legend_S40labeledtextfield">Height (centimeters):</div>
+				<input type="text" name="height" id="height" class="ui-text-input_S40labeledtextfield"/>
+			</div>
+			<div>
+				<button name="bmi" id="bmi" class="ui-button_S40button" onclick="getValue();">Get Detail</button>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size:medium;">
+	        </div>
+	        <div>
+	        	<table> 
+					<tr> 
+						<th scope="col">Category</th>  
+						<th scope="col">BMI range</th>  
+					</tr> 
+					<tr> 
+						<th scope="row">Very severely underweight</th> 
+						<td>less than 15</td> 
+					</tr> 
+					<tr> 
+						<th scope="row">Severely underweight</th> 
+						<td>from 15.0 to 16.0</td> 
+					</tr> 
+					<tr> 
+						<th scope="row">Underweight</th> 
+						<td>from 16.0 to 18.5</td> 
+					</tr>
+					<tr> 
+						<th scope="row">Normal (healthy weight)</th> 
+						<td>from 18.5 to 25</td> 
+					</tr> 
+					<tr> 
+						<th scope="row">Overweight</th> 
+						<td>from 25 to 30</td> 
+					</tr> 
+					<tr> 
+						<th scope="row">Obese Class I (Moderately obese)</th> 
+						<td>from 30 to 35</td> 
+					</tr>
+					<tr> 
+						<th scope="row">Obese Class II (Severely obese)</th> 
+						<td>from 35 to 40</td> 
+					</tr> 
+					<tr> 
+						<th scope="row">Obese Class III (Very severely obese)</th> 
+						<td>over 40</td> 
+					</tr> 
+				</table>
+	        </div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

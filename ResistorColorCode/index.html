@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Resistor Color Code</title>
+    <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
+    <script language="javascript" type="text/javascript" src="http://cdn2.inner-active.mobi/wv-js/inneractive_nokia_S40.js"></script>
+    <script type="text/javascript">
+    	function calculateResistor() {
+			var band1Val=document.getElementById("band1").value;
+			var band2Val=document.getElementById("band2").value;
+			var band3Val=document.getElementById("band3").value;
+			var multiplierVal=document.getElementById("multiplier").value;
+			var toleranceVal=document.getElementById("tolerance").value;
+			if(band1Val == "none" || band2Val == "none" || multiplierVal == "none" || toleranceVal == "none" ) {
+				document.getElementById("result").innerHTML="Band 1, Band 2, Multiplier & Tolerance is mandatory field.";
+			}
+			else {
+				var resultString="";
+				var bandVal=0;
+				if(band3Val == "none") {
+					bandVal = ((Number(band1Val) * 10) + Number(band2Val));
+				}
+				else {
+					bandVal = ((Number(band1Val) * 100) + (Number(band2Val) * 10) + Number(band3Val));
+				}
+				var finalVal=(bandVal * Number(multiplierVal));
+				resultString=finalVal+" ohm, " + toleranceVal;
+				document.getElementById("result").innerHTML=resultString;
+			}
+		}		
+	</script>	
+</head>
+<body>
+	<div id="inneractiveBanner"> </div>
+    <div class="ui-page">
+        <!-- header -->
+        <div class="ui-header">
+             <div class="ui-title inline"><h2>Resistor Color Code</h2></div>
+        </div>
+        <div class="ui-content">
+        	<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">*Band 1:</div>
+				<select id="band1" onchange="calculateResistor();">
+					<option value="none"></option>
+					<option value="0">Black</option>
+					<option value="1">Brown</option>
+					<option value="2">Red</option>
+					<option value="3">Orange</option>
+					<option value="4">Yellow</option>
+					<option value="5">Green</option>
+					<option value="6">Blue</option>
+					<option value="7">Violet</option>
+					<option value="8">Grey</option>
+					<option value="9">White</option>
+				</select>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">*Band 2:</div>
+				<select id="band2" onchange="calculateResistor();">
+					<option value="none"></option>
+					<option value="0">Black</option>
+					<option value="1">Brown</option>
+					<option value="2">Red</option>
+					<option value="3">Orange</option>
+					<option value="4">Yellow</option>
+					<option value="5">Green</option>
+					<option value="6">Blue</option>
+					<option value="7">Violet</option>
+					<option value="8">Grey</option>
+					<option value="9">White</option>
+				</select>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">Band 3:</div>
+				<select id="band3" onchange="calculateResistor();">
+					<option value="none"></option>
+					<option value="0">Black</option>
+					<option value="1">Brown</option>
+					<option value="2">Red</option>
+					<option value="3">Orange</option>
+					<option value="4">Yellow</option>
+					<option value="5">Green</option>
+					<option value="6">Blue</option>
+					<option value="7">Violet</option>
+					<option value="8">Grey</option>
+					<option value="9">White</option>
+				</select>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">*Multiplier:</div>
+				<select id="multiplier" onchange="calculateResistor();">
+					<option value="none"></option>
+					<option value="1">Black</option>
+					<option value="10">Brown</option>
+					<option value="100">Red</option>
+					<option value="1000">Orange</option>
+					<option value="10000">Yellow</option>
+					<option value="100000">Green</option>
+					<option value="1000000">Blue</option>
+					<option value="10000000">Violet</option>
+					<option value="100000000">Grey</option>
+					<option value="1000000000">White</option>
+				</select>
+			</div>
+			<div class="ui-fieldset_S40labeledtextfield">
+				<div class="ui-legend_S40labeledtextfield">*Tolerance:</div>
+				<select id="tolerance" onchange="calculateResistor();">
+					<option value="none"></option>
+					<option value="5%">Gold</option>
+					<option value="10%">Silver</option>
+					<option value="20%">None</option>
+				</select>
+			</div>
+			<div id="result" style="font-weight:bold; color:Red; font-size: medium;">
+        	</div>
+		</div>
+    </div>
+    <script type="text/javascript">
+	    //Mandatory parameters
+	    inneractive.parameters.divID = "inneractiveBanner";
+	    inneractive.parameters.appID = "Ankur_Inc_QRCodeGenerator_Nokia";
+	 
+	    //Optional parameters
+	    inneractive.parameters.age = 25;
+	 
+	    //Display the ad in the target div
+	    inneractive.displayInneractiveAd();
+	 
+	</script>    
+</body>
+</html>

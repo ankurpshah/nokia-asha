@@ -1,0 +1,24 @@
+table {
+	background: #fff;
+	border: 1px solid #b4b4b4;
+	padding: 0px;
+	margin-top:10px;
+	width: 100%;
+}
+   table caption { text-align:left;  }
+   table thead tr th { background:#000; color:#fff; text-align:left; border-bottom-width:1px; border-top-width:1px; }
+table tr td {
+	text-align:left;
+	color: #666;
+	border-bottom: 1px solid #b4b4b4;
+	border-right: 1px solid #b4b4b4;
+	padding: 10px 10px 10px 10px;
+}
+
+table tr th {
+	text-align:left;
+	color: #666;
+	border-bottom: 1px solid #b4b4b4;
+	border-right: 1px solid #b4b4b4;
+	padding: 10px 10px 10px 10px;
+}
